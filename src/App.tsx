@@ -4,6 +4,8 @@ import FloatingNumber from "./components/FloatingNumber";
 import { motion } from "framer-motion";
 import "./App.css";
 import { useDebounce } from "@uidotdev/usehooks";
+import Details from "./components/Details";
+import Coin from "./assets/coin.webp";
 
 type Touch = {
   top: number;
@@ -15,54 +17,17 @@ function App() {
   const tapper = useTapper();
   const [touches, setTouches] = React.useState<Touch[]>([]);
   const [tapInstances, setTapInstances] = React.useState<React.ReactNode[]>([]);
-  const debouncedTapInstances = useDebounce(tapInstances, 800)
-
-  React.useEffect(()=>{
-    if (debouncedTapInstances) {
-      setTapInstances([])
-    }
-  }, [debouncedTapInstances])
+  const debouncedTapInstances = useDebounce(tapInstances, 1000);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      tapper.updateRemain();
-    }, 500);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    if (debouncedTapInstances) {
+      setTapInstances([]);
+    }
+  }, [debouncedTapInstances]);
 
   return (
     <React.Fragment>
-      <div
-        style={{ padding: 20, zIndex: 1, position: "fixed", top: 0, left: 0 }}
-      >
-        <div
-          style={{
-            fontSize: 80,
-            opacity: 0.9,
-          }}
-        >
-          {tapper.points.toLocaleString()}
-        </div>
-        <div
-          style={{
-            fontSize: 25,
-            opacity: 0.5,
-          }}
-        >
-          <span
-            style={{ color: tapper.remain < tapper.taps ? "#f22" : "inherit" }}
-          >
-            {tapper.remain}
-          </span>
-          <span style={{ marginInline: 5 }}>/</span>
-          <span>{tapper.tank}</span>
-        </div>
-        <div>{touches.length}</div>
-        <div>{tapInstances.length}</div>
-        <div>{debouncedTapInstances.length}</div>
-      </div>
+      <Details />
       <motion.div
         onTouchEnd={(e) => {
           if (tapper.remain < tapper.taps) return;
@@ -115,7 +80,17 @@ function App() {
           fontSize: 50,
           color: "#f3f3f3",
         }}
-      ></motion.div>
+      >
+        <img
+          src={Coin}
+          style={{
+            width: 250,
+            height: undefined,
+            aspectRatio: 1 / 1,
+            marginTop: 50,
+          }}
+        />
+      </motion.div>
       {tapInstances.map((instance) => {
         return instance;
       })}

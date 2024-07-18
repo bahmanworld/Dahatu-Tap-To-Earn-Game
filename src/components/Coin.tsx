@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import { useTapper } from "../stores/useTapper";
 import { useDebounce } from "@uidotdev/usehooks";
 import FloatingNumber from "./FloatingNumber";
-import CoinImgSrc from "../assets/coin.webp";
-import HandImgSrc from "../assets/hand.png";
+import CoinImgSrc from "../assets/coinx.png";
+import HandImgSrc from "../assets/hand.webp";
+import * as TONConnect from "@tonconnect/ui-react";
 
 type Touch = {
   top: number;
   left: number;
-  done: boolean;
 };
 
 const Coin = () => {
@@ -18,27 +18,34 @@ const Coin = () => {
   const [tapInstances, setTapInstances] = React.useState<React.ReactNode[]>([]);
   const debouncedTapInstances = useDebounce(tapInstances, 1000);
 
-  const [scale, setScale] = React.useState(1)
+  const [scale, setScale] = React.useState(1);
 
   React.useEffect(() => {
     if (debouncedTapInstances) {
       setTapInstances([]);
+      setTouches([]);
     }
   }, [debouncedTapInstances]);
 
   return (
-    <>
-      <motion.div
+    <div
+      style={{
+        flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <div
         style={{
           flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundImage: HandImgSrc
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-        animate={{scale}}
         onTouchEnd={(e) => {
-          setScale(1)
+          setScale(1);
           if (tapper.remain < tapper.taps) return;
           setTouches([]);
           touches.forEach((touch) => {
@@ -63,35 +70,45 @@ const Coin = () => {
           setTouches([]);
         }}
         onTouchStart={(e) => {
-          setScale(0.8)
+          setScale(0.95);
           if (tapper.remain < tapper.taps) return;
           const ts: Touch[] = [];
           for (let i = 0; i < e.targetTouches.length; i++) {
-            const top = e.targetTouches[i].clientY - 15;
-            const left = e.targetTouches[i].clientX - 15;
+            const top = e.targetTouches.item(i).clientY - 20;
+            const left = e.targetTouches.item(i).clientX - 20;
             ts.push({
               top,
               left,
-              done: false,
             });
           }
           setTouches(ts);
         }}
       >
-        <img
-          src={HandImgSrc}
-          style={{
-            width: "80%",
-            height: undefined,
-            aspectRatio: 1 / 1,
-            marginTop: -100
-          }}
-        />
-      </motion.div>
+        <motion.div
+          style={{ textAlign: "center" }}
+          // initial={{rotateZ: -3}}
+          // animate={{rotateZ: 3}}
+          // transition={{ease: "easeInOut", duration: 0.3, repeatType: "reverse", repeat: Infinity}}
+        >
+          <motion.img
+            src={CoinImgSrc}
+            animate={{ scale }}
+            transition={{ repeatType: "loop" }}
+            style={{
+              width: "50%",
+              maxWidth: "30%",
+              height: undefined,
+              // aspectRatio: 1 / 1,
+              pointerEvents: "none",
+              opacity: 0.4,
+            }}
+          />
+        </motion.div>
+      </div>
       {tapInstances.map((instance) => {
         return instance;
       })}
-    </>
+    </div>
   );
 };
 

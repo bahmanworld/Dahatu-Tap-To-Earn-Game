@@ -1,7 +1,7 @@
 import React from "react";
 import { useTapper } from "../stores/useTapper";
 
-const Header = () => {
+const Footer = () => {
   const tapper = useTapper();
 
   React.useEffect(() => {
@@ -14,9 +14,10 @@ const Header = () => {
   }, []);
 
   return (
-    <div style={{padding: 10, paddingTop: 20}}>
+    <div style={{padding: 10, paddingBottom: 20}}>
       <div
         style={{
+          zIndex: 1,
           padding: 10,
           paddingInline: 35,
           backgroundColor: "#fff1",
@@ -39,7 +40,7 @@ const Header = () => {
           <span
             style={{
               fontSize: 18,
-              color: "#baf9",
+              color: "#fd3a",
               marginInlineStart: 10,
             }}
           >
@@ -50,7 +51,6 @@ const Header = () => {
           style={{
             fontSize: 16,
             opacity: 0.5,
-            fontWeight: 'normal'
           }}
         >
           <span
@@ -58,16 +58,14 @@ const Header = () => {
           >
             {tapper.remain.toLocaleString("en-US")}
           </span>
-          <span style={{ marginInline: 5 }}>•</span>
+          <span style={{ marginInline: 10 }}>•</span>
           <span style={{ opacity: 0.4 }}>
             {tapper.tank.toLocaleString("en-US")}
           </span>
-          <span style={{ marginInline: 5 }}>•</span>
-          x2
         </div>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default Footer;

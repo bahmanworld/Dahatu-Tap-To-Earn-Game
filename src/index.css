@@ -3,18 +3,23 @@
   src: url("./assets/fonts/BurbankBig.woff2");
 }
 @font-face {
-  font-family: "NotoSansKurdish";
-  src: url("./assets/fonts/NotoSansArabic-Regular.ttf");
+  font-family: "VazirMatn";
+  src: url("./assets/fonts/Vazirmatn-Regular.ttf");
 }
 @font-face {
-  font-family: "NotoSansKurdish";
+  font-family: "VazirMatn";
+  font-weight: 500, 600;
+  src: url("./assets/fonts/Vazirmatn-Medium.ttf");
+}
+@font-face {
+  font-family: "VazirMatn";
   font-weight: bold;
-  src: url("./assets/fonts/NotoSansArabic-Medium.ttf");
+  src: url("./assets/fonts/Vazirmatn-Bold.ttf");
 }
 @font-face {
-  font-family: "NotoSansKurdish";
+  font-family: "VazirMatn";
   font-weight: 900;
-  src: url("./assets/fonts/NotoSansArabic-Black.ttf");
+  src: url("./assets/fonts/Vazirmatn-Black.ttf");
 }
 @font-face {
   font-family: "Rubik";
@@ -44,8 +49,8 @@ body {
   background-color: #000;
   color: #ddd;
   background-image: radial-gradient(ellipse at center, #0005, transparent),
-    radial-gradient(ellipse at center, #85f4, transparent);
-  background-size: 200% 150%;
+    radial-gradient(ellipse at center, #416, transparent);
+  background-size: 300% 150%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +64,8 @@ body {
   touch-action: none;
   -webkit-touch-callout: none;
   touch-action: none;
-  font-family: "Rubik","SF Pro Rounded", system-ui, -apple-system,
+  font-weight: 900;
+  font-family: "VazirMatn", "Rubik", "SF Pro Rounded", system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Open Sans", "Helvetica Neue", sans-serif;
   outline: none;

@@ -44,84 +44,69 @@ const Coin = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
-        onTouchEnd={(e) => {
-          setScale(1);
-          if (tapper.remain < tapper.taps) return;
-          setTouches([]);
-          touches.forEach((touch) => {
-            const location = {
-              top: touch.top,
-              left: touch.left,
-            };
-            const newInstance = (
-              <FloatingNumber
-                visible={true}
-                value={tapper.taps}
-                location={location}
-                onDone={() => {}}
-              />
-            );
-            setTapInstances((prev) => [...prev, newInstance]);
-          });
-          tapper.updatePoints(tapper.taps);
-          navigator.vibrate([30]);
-        }}
-        onTouchCancel={(e) => {
-          e.preventDefault();
-          setTouches([]);
-        }}
-        onTouchStart={(e) => {
-          setScale(0.97);
-          if (tapper.remain < tapper.taps) return;
-          const ts: Touch[] = [];
-          for (let i = 0; i < e.targetTouches.length; i++) {
-            const top = e.targetTouches.item(i).clientY - 10;
-            const left = e.targetTouches.item(i).clientX - 10;
-            ts.push({
-              top,
-              left,
-            });
-          }
-          setTouches(ts);
-        }}
-        // onMouseDown={() => {
-        //   setScale(0.95);
-        // }}
-        // onClick={(e) => {
-        //   setScale(1);
-        //   if (tapper.remain < tapper.taps) return;
-        //   const location = {
-        //     top: e.clientY - 20,
-        //     left: e.clientX - 20,
-        //   };
-        //   const newInstance = (
-        //     <FloatingNumber
-        //       visible={true}
-        //       value={tapper.taps}
-        //       location={location}
-        //       onDone={() => {}}
-        //     />
-        //   );
-        //   setTapInstances((prev) => [...prev, newInstance]);
-        //   tapper.updatePoints(tapper.taps);
-        //   navigator.vibrate([30]);
-        // }}
       >
-        <motion.div style={{ textAlign: "center" }}>
+        <motion.div
+          style={{
+            width: "80%",
+            textAlign: "center",
+            backgroundColor: "red",
+            alignSelf: "center",
+            borderBottomRightRadius: 500,
+            borderBottomLeftRadius: 500,
+            borderTopRightRadius: 1000,
+            borderTopLeftRadius: 1000,
+          }}
+          onTouchEnd={(e) => {
+            setScale(1);
+            if (tapper.remain < tapper.taps) return;
+            setTouches([]);
+            touches.forEach((touch) => {
+              const location = {
+                top: touch.top,
+                left: touch.left,
+              };
+              const newInstance = (
+                <FloatingNumber
+                  visible={true}
+                  value={tapper.taps}
+                  location={location}
+                  onDone={() => {}}
+                />
+              );
+              setTapInstances((prev) => [...prev, newInstance]);
+            });
+            tapper.updatePoints(tapper.taps);
+            navigator.vibrate([30]);
+          }}
+          onTouchCancel={(e) => {
+            e.preventDefault();
+            setTouches([]);
+          }}
+          onTouchStart={(e) => {
+            setScale(0.97);
+            if (tapper.remain < tapper.taps) return;
+            const ts: Touch[] = [];
+            for (let i = 0; i < e.targetTouches.length; i++) {
+              const top = e.targetTouches.item(i).clientY - 10;
+              const left = e.targetTouches.item(i).clientX - 10;
+              ts.push({
+                top,
+                left,
+              });
+            }
+            setTouches(ts);
+          }}
+        >
           <motion.img
             src={CoinImgSrc}
             animate={{ scale }}
             transition={{ duration: 0.1 }}
             style={{
-              width: "80%",
+              width: "100%", // use parent width
               height: undefined,
               aspectRatio: 1 / 1,
-              borderBottomRightRadius: 500,
-              borderBottomLeftRadius: 500,
-              borderTopRightRadius: 1000,
-              borderTopLeftRadius: 1000,
+              filter: "brightness(0.5)",
               pointerEvents: "none",
-              filter: 'brightness(0.9)'
             }}
           />
         </motion.div>

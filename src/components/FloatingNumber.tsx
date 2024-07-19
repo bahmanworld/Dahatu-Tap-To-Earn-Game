@@ -1,9 +1,4 @@
-import {
-  AnimatePresence,
-  motion,
-  cubicBezier,
-  mirrorEasing,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
 function randomNumber(min: number, max: number) {

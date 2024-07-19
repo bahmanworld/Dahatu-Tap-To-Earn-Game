@@ -137,10 +137,15 @@ const Header = () => {
           />
           <div
             style={{
+              width: 80,
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: "ellipsis",
               fontWeight: "bold",
+              textAlign: 'center'
             }}
           >
-            bd6982
+            bahman6982
           </div>
           <div
             style={{

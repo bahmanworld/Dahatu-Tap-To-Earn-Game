@@ -4,8 +4,6 @@ import { useTapper } from "../stores/useTapper";
 import { useDebounce } from "@uidotdev/usehooks";
 import FloatingNumber from "./FloatingNumber";
 import CoinImgSrc from "../assets/coinx.png";
-import HandImgSrc from "../assets/hand.webp";
-import * as TONConnect from "@tonconnect/ui-react";
 
 type Touch = {
   top: number;
@@ -55,7 +53,7 @@ const Coin = () => {
             borderTopRightRadius: 1000,
             borderTopLeftRadius: 1000,
           }}
-          onTouchEnd={(e) => {
+          onTouchEnd={() => {
             setScale(1);
             setTouches([]);
             if (tapper.remain < tapper.taps) return;

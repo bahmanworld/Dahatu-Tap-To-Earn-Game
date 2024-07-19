@@ -49,7 +49,6 @@ const Coin = () => {
           style={{
             width: "80%",
             textAlign: "center",
-            backgroundColor: "red",
             alignSelf: "center",
             borderBottomRightRadius: 500,
             borderBottomLeftRadius: 500,

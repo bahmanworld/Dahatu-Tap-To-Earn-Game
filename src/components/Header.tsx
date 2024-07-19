@@ -19,7 +19,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div style={{ padding: 10, paddingTop: 20 }}>
+    <div>
       <div
         style={{
           padding: 20,
@@ -36,23 +36,23 @@ const Header = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginBottom: -2,
+            marginBottom: -10,
           }}
         >
           <div
             style={{
-              fontSize: 40,
+              fontSize: 50,
               marginInline: 10,
               position: "relative",
-              top: -3,
+              top: -8,
             }}
           >
             {tapper.points.toLocaleString("fa-IR")}
           </div>
           <div
             style={{
-              fontSize: 22,
-              color: "#baf9",
+              fontSize: 30,
+              color: "#baf6",
             }}
           >
             $DTU
@@ -72,7 +72,6 @@ const Header = () => {
               paddingInline: 10,
               borderRadius: 5,
               fontSize: 14,
-              marginBottom: 10,
               fontWeight: "normal",
               backgroundColor: "#fff2",
               boxShadow: "inset 0 0 0 1px #fff2",
@@ -87,7 +86,6 @@ const Header = () => {
               paddingInline: 10,
               borderRadius: 5,
               fontSize: 14,
-              marginBottom: 10,
               fontWeight: "normal",
               backgroundColor: "#fff2",
               boxShadow: "inset 0 0 0 1px #fff2",
@@ -120,6 +118,7 @@ const Header = () => {
           style={{
             opacity: 0.8,
             fontWeight: "normal",
+            marginTop: 20
           }}
         >
           <span

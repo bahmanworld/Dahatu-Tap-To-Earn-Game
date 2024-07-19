@@ -47,7 +47,7 @@ const Coin = () => {
       >
         <motion.div
           style={{
-            width: "80%",
+            width: "90%",
             textAlign: "center",
             alignSelf: "center",
             borderBottomRightRadius: 500,

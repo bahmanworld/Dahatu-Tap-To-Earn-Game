@@ -41,7 +41,7 @@ const FloatingNumber: React.FC<Props> = (props) => {
             type: "keyframes",
             ease: "easeOut",
             duration: 1,
-            opacity: { delay: 0.4 },
+            opacity: { delay: 0.5 },
           }}
           style={{
             width: 30,

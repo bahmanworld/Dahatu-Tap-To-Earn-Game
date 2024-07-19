@@ -2,7 +2,7 @@ import React from "react";
 import { useTapper } from "../stores/useTapper";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
-import AvatarImgSrc from "../assets/avatar.avif";
+import AvatarImgSrc from "../assets/avatar.png";
 
 function percentage(partialValue: number, totalValue: number) {
   return (100 * partialValue) / totalValue;
@@ -29,7 +29,7 @@ const Header = () => {
           paddingTop: 25,
           borderRadius: 100,
           display: "flex",
-          alignItems: "center",
+          alignItems: "end",
           justifyContent: "center",
           fontWeight: "900",
         }}
@@ -61,9 +61,9 @@ const Header = () => {
             </div>
             <div
               style={{
-                fontSize: 20,
+                fontSize: 22,
                 color: "#baf6",
-                marginInlineStart: 10,
+                marginInlineStart: 3,
               }}
             >
               $DTU
@@ -128,8 +128,8 @@ const Header = () => {
           <img
             src={AvatarImgSrc}
             style={{
-              width: 40,
-              height: 40,
+              width: 50,
+              height: 50,
               backgroundColor: "#fff2",
               borderRadius: 100,
               pointerEvents: "none",

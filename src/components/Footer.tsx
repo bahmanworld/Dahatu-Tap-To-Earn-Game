@@ -65,7 +65,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <div style={{ padding: 10, paddingBottom: 30 }}>
+    <div style={{ padding: 20, paddingBottom: 30 }}>
       <div
         style={{
           zIndex: 1,
@@ -90,7 +90,12 @@ const Footer = () => {
                 }}
               >
                 <span
-                  style={{ width: 1, height: 50, backgroundColor: "#fff1" }}
+                  style={{
+                    width: 0.6,
+                    height: 40,
+                    backgroundColor: "#fff2",
+                    boxShadow: "-0.8px 0 #000",
+                  }}
                 ></span>
               </div>
             );
@@ -127,16 +132,25 @@ const Footer = () => {
               <div
                 style={{
                   position: "absolute",
-                  width: 10,
-                  height: 10,
-                  border: "3px solid #333",
-                  backgroundColor: "#fa1",
-                  top: 10,
+                  width: 16,
+                  height: 16,
+                  border: "3px solid #322",
+                  backgroundColor: "#f91",
+                  color: "#000",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                  fontSize: 12,
+                  top: 5,
                   right: 20,
                   borderRadius: 100,
                   opacity: tab.dot ? 1 : 0,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              ></div>
+              >
+                <span style={{ position: "relative", top: 1 }}>8</span>
+              </div>
             </motion.div>
           );
         })}

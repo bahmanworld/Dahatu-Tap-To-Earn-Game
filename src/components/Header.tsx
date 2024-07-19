@@ -14,7 +14,7 @@ const Header = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       tapper.updateRemain();
-    }, 1000);
+    }, 200);
     return () => {
       clearInterval(interval);
     };
@@ -26,7 +26,6 @@ const Header = () => {
         style={{
           padding: 15,
           paddingInline: 20,
-          paddingTop: 25,
           borderRadius: 100,
           display: "flex",
           alignItems: "end",
@@ -128,22 +127,22 @@ const Header = () => {
           <img
             src={AvatarImgSrc}
             style={{
-              width: 50,
-              height: 50,
+              width: 40,
+              height: 40,
               backgroundColor: "#fff2",
               borderRadius: 100,
               pointerEvents: "none",
-              boxShadow: 'inset 0 0 0 1px #fff'
+              boxShadow: "inset 0 0 0 1px #fff",
             }}
           />
           <div
             style={{
               width: 80,
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
+              overflow: "hidden",
+              whiteSpace: "nowrap",
               textOverflow: "ellipsis",
               fontWeight: "bold",
-              textAlign: 'center'
+              textAlign: "center",
             }}
           >
             bd6982

@@ -29,8 +29,8 @@ const FloatingNumber: React.FC<Props> = (props) => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ scale: 0.5 }}
-          animate={{ y: -250, scale: 1.5, translateX: randomNumber(-25, 25) }}
+          initial={{ scale: .8 }}
+          animate={{ y: -250, scale: 1.2, translateX: randomNumber(-25, 25) }}
           exit={{ opacity: 0 }}
           transition={{
             type: "keyframes",
@@ -50,11 +50,10 @@ const FloatingNumber: React.FC<Props> = (props) => {
             fontSize: 20,
             fontWeight: "bold",
             pointerEvents: "none",
-            backgroundColor: "#fff2",
+            backgroundColor: "#fff3",
             color: "#fff",
-            textShadow: "1px 1px #0006",
-            boxShadow: "0px 0px 2px #0009",
-            border: "1px solid #fff4",
+            boxShadow: "0px 0px 2px #000",
+            border: "1px solid #fff8",
             padding: 10,
             borderRadius: "100%",
           }}

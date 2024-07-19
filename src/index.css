@@ -25,8 +25,8 @@ body {
   margin: 0px;
   background-color: #000;
   color: #ddd;
-  background-image: radial-gradient(ellipse at center, #0005, transparent),
-    radial-gradient(ellipse at center, #416, transparent);
+  background-image: radial-gradient(ellipse at center, #000, transparent),
+    radial-gradient(ellipse at center, #316, transparent);
   background-size: 300% 150%;
   display: flex;
   justify-content: center;
@@ -46,4 +46,9 @@ body {
     "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1;
   outline: none;
+}
+
+
+a {
+  color: #f5d;
 }

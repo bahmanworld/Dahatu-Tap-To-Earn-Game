@@ -1,5 +1,5 @@
 import React from "react";
-import { Blocks, Hand, Users, Wallet, Zap } from "lucide-react";
+import { BookOpenCheck, Hand, UserPlus, Wallet, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -9,10 +9,13 @@ const Footer = () => {
       {
         id: "invite",
         title: "Invite",
-        icon: <Users size={25} absoluteStrokeWidth />,
+        icon: <UserPlus size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
         dot: false,
+        onClick: ()=>{
+
+        }
       },
 
       {
@@ -21,10 +24,13 @@ const Footer = () => {
       {
         id: "task",
         title: "Tasks",
-        icon: <Blocks size={25} absoluteStrokeWidth />,
+        icon: <BookOpenCheck size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
-        dot: true,
+        dot: false,
+        onClick: ()=>{
+
+        }
       },
       {
         type: "divider",
@@ -36,6 +42,9 @@ const Footer = () => {
         page: <div></div>,
         type: "tab",
         dot: false,
+        onClick: ()=>{
+
+        }
       },
       {
         type: "divider",
@@ -47,6 +56,9 @@ const Footer = () => {
         page: <div></div>,
         type: "tab",
         dot: true,
+        onClick: ()=>{
+
+        }
       },
       {
         type: "divider",
@@ -59,15 +71,17 @@ const Footer = () => {
         page: <div></div>,
         type: "tab",
         dot: false,
+        onClick: ()=>{
+          
+        }
       },
     ];
   }, []);
 
   return (
-    <div style={{ padding: 20, paddingBottom: 30 }}>
+    <div style={{ padding: 20}}>
       <div
         style={{
-          zIndex: 1,
           backgroundColor: "#fff1",
           boxShadow: "inset 0 0 0 1px #fff1",
           border: "1px solid #0008",
@@ -76,6 +90,7 @@ const Footer = () => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
+          paddingInline: 10,
         }}
       >
         {tabs.map((tab, index) => {
@@ -118,7 +133,30 @@ const Footer = () => {
                 paddingBlock: 15,
               }}
             >
-              <div style={{ marginBottom: 2 }}>{tab.icon}</div>
+              <div style={{ marginBottom: 2, position: "relative" }}>
+                {tab.icon}
+                <div
+                onClick={tab.onClick}
+                  style={{
+                    position: "absolute",
+                    width: 10,
+                    height: 10,
+                    border: "3px solid #322",
+                    backgroundColor: "#f91",
+                    color: "#000",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    fontSize: 12,
+                    top: -5,
+                    right: -10,
+                    borderRadius: 100,
+                    opacity: tab.dot ? 1 : 0,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                ></div>
+              </div>
               <div
                 style={{
                   fontSize: 14,
@@ -128,26 +166,6 @@ const Footer = () => {
               >
                 {tab.title}
               </div>
-              <div
-                style={{
-                  position: "absolute",
-                  width: 10,
-                  height: 10,
-                  border: "3px solid #322",
-                  backgroundColor: "#f91",
-                  color: "#000",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  fontSize: 12,
-                  top: 10,
-                  right: 20,
-                  borderRadius: 100,
-                  opacity: tab.dot ? 1 : 0,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              ></div>
             </motion.div>
           );
         })}

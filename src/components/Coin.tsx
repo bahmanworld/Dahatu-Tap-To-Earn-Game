@@ -4,6 +4,7 @@ import { useTapper } from "../stores/useTapper";
 import { useDebounce } from "@uidotdev/usehooks";
 import FloatingNumber from "./FloatingNumber";
 import CoinImgSrc from "../assets/coinx.png";
+import { TonConnectButton, useTonConnectUI } from "@tonconnect/ui-react";
 
 type Touch = {
   top: number;
@@ -11,6 +12,7 @@ type Touch = {
 };
 
 const Coin = () => {
+  const [ton, setOptions] = useTonConnectUI()
   const tapper = useTapper();
   const [touches, setTouches] = React.useState<Touch[]>([]);
   const [tapInstances, setTapInstances] = React.useState<React.ReactNode[]>([]);
@@ -28,7 +30,6 @@ const Coin = () => {
   return (
     <div
       style={{
-        flex: 1,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -39,19 +40,21 @@ const Coin = () => {
         style={{
           flex: 1,
           display: "flex",
+          flexDirection: 'column',
           justifyContent: "center",
           alignItems: "center",
+          alignSelf: 'stretch'
         }}
       >
         <motion.div
           style={{
-            width: "90%",
+            width: "80%",
+            maxWidth: 700,
+            paddingInline: 100,
+            height: undefined,
+            aspectRatio: 1/1,
             textAlign: "center",
             alignSelf: "center",
-            borderBottomRightRadius: 500,
-            borderBottomLeftRadius: 500,
-            borderTopRightRadius: 1000,
-            borderTopLeftRadius: 1000,
           }}
           onTouchEnd={() => {
             setScale(1);
@@ -94,15 +97,17 @@ const Coin = () => {
             animate={{ scale }}
             transition={{ duration: 0.05 }}
             style={{
+              position: 'relative',
+              top: 10,
               width: "100%", // !CAUTION: use parent width
-              height: undefined,
-              aspectRatio: 1 / 1,
+              height: '100%',
               filter: "brightness(0.8)",
               pointerEvents: "none",
             }}
           />
         </motion.div>
       </div>
+      <TonConnectButton />
       {tapInstances.map((instance) => {
         return instance;
       })}

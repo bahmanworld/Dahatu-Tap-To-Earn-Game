@@ -103,9 +103,9 @@ const Footer = () => {
                 opacity: currentTab == index ? 1 : 0.5,
                 scale: currentTab == index ? 1.06 : 1,
               }}
-              transition={{ stiffness: 10 }}
+              transition={{ stiffness: 10, duration: 0.1 }}
               style={{
-                position: 'relative',
+                position: "relative",
                 flex: 1,
                 display: "flex",
                 justifyContent: "center",
@@ -124,19 +124,19 @@ const Footer = () => {
               >
                 {tab.title}
               </div>
-              <div style={{
-                position: 'absolute',
-                width: 10,
-                height: 10,
-                border: '3px solid #333', 
-                backgroundColor:'#fa1',
-                top: 10,
-                right: 20,
-                borderRadius: 100,
-                opacity: tab.dot ? 1 : 0
-              }}>
-
-              </div>
+              <div
+                style={{
+                  position: "absolute",
+                  width: 10,
+                  height: 10,
+                  border: "3px solid #333",
+                  backgroundColor: "#fa1",
+                  top: 10,
+                  right: 20,
+                  borderRadius: 100,
+                  opacity: tab.dot ? 1 : 0,
+                }}
+              ></div>
             </motion.div>
           );
         })}

@@ -57,8 +57,8 @@ const Coin = () => {
           }}
           onTouchEnd={(e) => {
             setScale(1);
-            if (tapper.remain < tapper.taps) return;
             setTouches([]);
+            if (tapper.remain < tapper.taps) return;
             touches.forEach((touch) => {
               const location = {
                 top: touch.top,
@@ -75,11 +75,6 @@ const Coin = () => {
               setTapInstances((prev) => [...prev, newInstance]);
             });
             tapper.updatePoints(tapper.taps);
-            navigator.vibrate([60]);
-          }}
-          onTouchCancel={(e) => {
-            e.preventDefault();
-            setTouches([]);
           }}
           onTouchStart={(e) => {
             setScale(0.95);
@@ -104,7 +99,7 @@ const Coin = () => {
               width: "100%", // !CAUTION: use parent width
               height: undefined,
               aspectRatio: 1 / 1,
-              filter: "brightness(0.5)",
+              filter: "brightness(0.8)",
               pointerEvents: "none",
             }}
           />

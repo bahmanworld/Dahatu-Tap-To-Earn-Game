@@ -10,7 +10,7 @@ type TappingProps = {
 };
 
 export const useTapper = create<TappingProps>((set, get) => ({
-  points: 20000000,
+  points: 1000,
   tank: 1000,
   remain: 1000,
   taps: 1,

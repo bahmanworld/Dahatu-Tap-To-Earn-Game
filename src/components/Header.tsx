@@ -25,6 +25,8 @@ const Header = () => {
       <div
         style={{
           padding: 15,
+          paddingInline: 20,
+          paddingTop: 25,
           borderRadius: 100,
           display: "flex",
           alignItems: "center",
@@ -73,7 +75,7 @@ const Header = () => {
               alignItems: "center",
               justifyContent: "center",
               gap: 4,
-              marginTop: 10,
+              marginTop: 6,
             }}
           >
             <div
@@ -88,7 +90,7 @@ const Header = () => {
                 border: "1px solid #000",
               }}
             >
-              Speed x3
+              Speed x1
             </div>
           </div>
           <div
@@ -143,7 +145,7 @@ const Header = () => {
           <div
             style={{
               paddingBlock: 3,
-              paddingInline: 5,
+              paddingInline: 8,
               borderRadius: 5,
               fontSize: 14,
               fontWeight: "normal",
@@ -171,11 +173,11 @@ const Header = () => {
                 borderRadius: 10,
               }}
             ></motion.span>
-            Level #3
+            Level #1
           </div>
         </div>
       </div>
-      <div style={{ paddingInline: 15 }}>
+      <div style={{ paddingInline: 20 }}>
         <div
           style={{
             width: "100%",

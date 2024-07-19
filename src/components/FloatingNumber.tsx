@@ -35,7 +35,7 @@ const FloatingNumber: React.FC<Props> = (props) => {
       {isVisible && (
         <motion.div
           initial={{ scale: 0.5 }}
-          animate={{ y: -300, scale: 1.5, translateX: randomNumber(-45, 45) }}
+          animate={{ y: -250, scale: 1.5, translateX: randomNumber(-25, 25) }}
           exit={{ opacity: 0 }}
           transition={{
             type: "keyframes",

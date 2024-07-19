@@ -133,6 +133,7 @@ const Header = () => {
               backgroundColor: "#fff2",
               borderRadius: 100,
               pointerEvents: "none",
+              boxShadow: 'inset 0 0 0 1px #fff'
             }}
           />
           <div

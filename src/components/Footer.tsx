@@ -1,18 +1,38 @@
 import React from "react";
-import { useTapper } from "../stores/useTapper";
-import { Blocks, Home, Users, Wallet, Zap } from "lucide-react";
+import { Blocks, Hand, Users, Wallet, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
-  const tapper = useTapper();
-
   const [currentTab, setCurrentTab] = React.useState(0);
   const tabs = React.useMemo(() => {
     return [
       {
+        id: "invite",
+        title: "Invite",
+        icon: <Users size={25} absoluteStrokeWidth />,
+        page: <div></div>,
+        type: "tab",
+        dot: false,
+      },
+
+      {
+        type: "divider",
+      },
+      {
+        id: "task",
+        title: "Tasks",
+        icon: <Blocks size={25} absoluteStrokeWidth />,
+        page: <div></div>,
+        type: "tab",
+        dot: true,
+      },
+      {
+        type: "divider",
+      },
+      {
         id: "home",
         title: "Tap",
-        icon: <Home size={25} absoluteStrokeWidth />,
+        icon: <Hand size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
         dot: false,
@@ -31,28 +51,7 @@ const Footer = () => {
       {
         type: "divider",
       },
-      {
-        id: "task",
-        title: "Tasks",
-        icon: <Blocks size={25} absoluteStrokeWidth />,
-        page: <div></div>,
-        type: "tab",
-        dot: true,
-      },
-      {
-        type: "divider",
-      },
-      {
-        id: "invite",
-        title: "Invite",
-        icon: <Users size={25} absoluteStrokeWidth />,
-        page: <div></div>,
-        type: "tab",
-        dot: false,
-      },
-      {
-        type: "divider",
-      },
+
       {
         id: "wallet",
         title: "Wallet",
@@ -106,9 +105,9 @@ const Footer = () => {
               key={tab.id}
               animate={{
                 opacity: currentTab == index ? 1 : 0.5,
-                scale: currentTab == index ? 1.06 : 1,
+                scale: currentTab == index ? 1.08 : 0.9,
               }}
-              transition={{ stiffness: 10, duration: 0.1 }}
+              transition={{ stiffness: 100, duration: 0.05 }}
               style={{
                 position: "relative",
                 flex: 1,
@@ -119,7 +118,7 @@ const Footer = () => {
                 paddingBlock: 15,
               }}
             >
-              <div>{tab.icon}</div>
+              <div style={{ marginBottom: 2 }}>{tab.icon}</div>
               <div
                 style={{
                   fontSize: 14,
@@ -132,15 +131,15 @@ const Footer = () => {
               <div
                 style={{
                   position: "absolute",
-                  width: 16,
-                  height: 16,
+                  width: 10,
+                  height: 10,
                   border: "3px solid #322",
                   backgroundColor: "#f91",
                   color: "#000",
                   fontWeight: "bold",
                   textAlign: "center",
                   fontSize: 12,
-                  top: 5,
+                  top: 10,
                   right: 20,
                   borderRadius: 100,
                   opacity: tab.dot ? 1 : 0,
@@ -148,9 +147,7 @@ const Footer = () => {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-              >
-                <span style={{ position: "relative", top: 1 }}>8</span>
-              </div>
+              ></div>
             </motion.div>
           );
         })}

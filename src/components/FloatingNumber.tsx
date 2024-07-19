@@ -2,7 +2,7 @@ import {
   AnimatePresence,
   motion,
   cubicBezier,
-  mirrorEasing
+  mirrorEasing,
 } from "framer-motion";
 import React from "react";
 
@@ -35,30 +35,33 @@ const FloatingNumber: React.FC<Props> = (props) => {
       {isVisible && (
         <motion.div
           initial={{ scale: 0.5 }}
-          animate={{ y: -300, scale: 2, translateX: randomNumber(-25, 25) }}
-          exit={{ opacity: 0}}
-          // transition={{ type: "keyframes", ease: "easeOut", duration: 1 }}
-          transition={{ easings: mirrorEasing, duration: 1 }}
+          animate={{ y: -300, scale: 1.5, translateX: randomNumber(-45, 45) }}
+          exit={{ opacity: 0 }}
+          transition={{
+            type: "keyframes",
+            ease: "easeOut",
+            duration: 1,
+            opacity: { delay: 0.4 },
+          }}
           style={{
             width: 30,
             height: 30,
-            display: 'flex',
-            transitionTimingFunction: "cubic-bezier(.09,.87,.72,.5)",
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             position: "fixed",
             top: props.location.top,
             left: props.location.left,
             fontSize: 20,
             fontWeight: "bold",
             pointerEvents: "none",
-            backgroundColor: '#fff2',
-            color: '#fff',
-            // textShadow: "1px 1px 2px #0004",
-            boxShadow: "0px 0px 1px #0006",
+            backgroundColor: "#fff2",
+            color: "#fff",
+            textShadow: "1px 1px #0006",
+            boxShadow: "0px 0px 2px #0009",
             border: "1px solid #fff4",
             padding: 10,
-            borderRadius: '100%',
+            borderRadius: "100%",
           }}
         >
           <span>+{props.value.toLocaleString("en-US")}</span>

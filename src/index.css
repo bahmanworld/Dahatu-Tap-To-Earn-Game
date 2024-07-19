@@ -38,7 +38,7 @@
 
 body {
   height: 100dvh;
-  width: 100vw;
+  width: 100dvw;
   padding: 0px;
   margin: 0px;
   background-color: #000;
@@ -46,6 +46,9 @@ body {
   background-image: radial-gradient(ellipse at center, #0005, transparent),
     radial-gradient(ellipse at center, #85f4, transparent);
   background-size: 200% 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 * {

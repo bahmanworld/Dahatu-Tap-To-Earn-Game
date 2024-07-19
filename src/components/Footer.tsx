@@ -28,41 +28,10 @@ const Footer = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontWeight: "900",
+          fontWeight: "600",
         }}
       >
-        <div
-          style={{
-            fontSize: 30,
-          }}
-        >
-          {tapper.points.toLocaleString("en-US")}
-          <span
-            style={{
-              fontSize: 18,
-              color: "#fd3a",
-              marginInlineStart: 10,
-            }}
-          >
-            $DTU
-          </span>
-        </div>
-        <div
-          style={{
-            fontSize: 16,
-            opacity: 0.5,
-          }}
-        >
-          <span
-            style={{ color: tapper.remain < tapper.taps ? "#f22" : "#fff" }}
-          >
-            {tapper.remain.toLocaleString("en-US")}
-          </span>
-          <span style={{ marginInline: 10 }}>•</span>
-          <span style={{ opacity: 0.4 }}>
-            {tapper.tank.toLocaleString("en-US")}
-          </span>
-        </div>
+        <div>This is a footer • x2</div>  
       </div>
     </div>
   );

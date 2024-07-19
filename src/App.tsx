@@ -1,4 +1,3 @@
-import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import "./App.css";
 import Coin from "./components/Coin";
 import Header from "./components/Header";
@@ -9,9 +8,10 @@ function App() {
     <div
       style={{
         height: "100dvh",
+        // maxWidth: '350px',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'stretch',
         flexDirection: 'column',
       }}
     >

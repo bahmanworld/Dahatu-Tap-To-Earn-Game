@@ -64,18 +64,19 @@ const Coin = () => {
             setTapInstances((prev) => [...prev, newInstance]);
           });
           tapper.updatePoints(tapper.taps);
+          navigator.vibrate([30]);
         }}
         onTouchCancel={(e) => {
           e.preventDefault();
           setTouches([]);
         }}
         onTouchStart={(e) => {
-          setScale(0.95);
+          setScale(0.97);
           if (tapper.remain < tapper.taps) return;
           const ts: Touch[] = [];
           for (let i = 0; i < e.targetTouches.length; i++) {
-            const top = e.targetTouches.item(i).clientY - 20;
-            const left = e.targetTouches.item(i).clientX - 20;
+            const top = e.targetTouches.item(i).clientY - 10;
+            const left = e.targetTouches.item(i).clientX - 10;
             ts.push({
               top,
               left,
@@ -83,24 +84,44 @@ const Coin = () => {
           }
           setTouches(ts);
         }}
+        // onMouseDown={() => {
+        //   setScale(0.95);
+        // }}
+        // onClick={(e) => {
+        //   setScale(1);
+        //   if (tapper.remain < tapper.taps) return;
+        //   const location = {
+        //     top: e.clientY - 20,
+        //     left: e.clientX - 20,
+        //   };
+        //   const newInstance = (
+        //     <FloatingNumber
+        //       visible={true}
+        //       value={tapper.taps}
+        //       location={location}
+        //       onDone={() => {}}
+        //     />
+        //   );
+        //   setTapInstances((prev) => [...prev, newInstance]);
+        //   tapper.updatePoints(tapper.taps);
+        //   navigator.vibrate([30]);
+        // }}
       >
-        <motion.div
-          style={{ textAlign: "center" }}
-          // initial={{rotateZ: -3}}
-          // animate={{rotateZ: 3}}
-          // transition={{ease: "easeInOut", duration: 0.3, repeatType: "reverse", repeat: Infinity}}
-        >
+        <motion.div style={{ textAlign: "center" }}>
           <motion.img
             src={CoinImgSrc}
             animate={{ scale }}
-            transition={{ repeatType: "loop" }}
+            transition={{ duration: 0.1 }}
             style={{
-              width: "50%",
-              maxWidth: "30%",
+              width: "80%",
               height: undefined,
-              // aspectRatio: 1 / 1,
+              aspectRatio: 1 / 1,
+              borderBottomRightRadius: 500,
+              borderBottomLeftRadius: 500,
+              borderTopRightRadius: 1000,
+              borderTopLeftRadius: 1000,
               pointerEvents: "none",
-              opacity: 0.4,
+              filter: 'brightness(0.9)'
             }}
           />
         </motion.div>

@@ -1,5 +1,10 @@
 import React from "react";
 import { useTapper } from "../stores/useTapper";
+import {motion} from 'framer-motion'
+
+function percentage(partialValue: number, totalValue: number) {
+  return (100 * partialValue) / totalValue;
+}
 
 const Header = () => {
   const tapper = useTapper();
@@ -14,14 +19,10 @@ const Header = () => {
   }, []);
 
   return (
-    <div style={{padding: 10, paddingTop: 20}}>
+    <div style={{ padding: 10, paddingTop: 20 }}>
       <div
         style={{
-          padding: 10,
-          paddingInline: 35,
-          backgroundColor: "#fff1",
-          boxShadow: "inset 0 0 0 1px #fff1",
-          border: "1px solid #0008",
+          padding: 20,
           borderRadius: 100,
           display: "flex",
           flexDirection: "column",
@@ -32,25 +33,65 @@ const Header = () => {
       >
         <div
           style={{
-            fontSize: 30,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: -2,
           }}
         >
-          {tapper.points.toLocaleString("en-US")}
-          <span
+          <div
             style={{
-              fontSize: 18,
+              fontSize: 40,
+              marginInline: 10,
+              position: "relative",
+              top: -3,
+            }}
+          >
+            {tapper.points.toLocaleString("en-US")}
+          </div>
+          <div
+            style={{
+              fontSize: 22,
               color: "#baf9",
-              marginInlineStart: 10,
             }}
           >
             $DTU
-          </span>
+          </div>
         </div>
         <div
+            style={{
+              paddingBlock: 3,
+              paddingInline: 10,
+              borderRadius: 5,
+              fontSize: 14,
+              marginBottom: 10,
+              fontWeight: "normal",
+              backgroundColor: "#fff2",
+              boxShadow: "inset 0 0 0 1px #fff2",
+              border: "1px solid #000",
+            }}
+          >
+            <motion.span
+            animate={{ opacity: 0.3 }}
+            transition={{ repeat: Infinity, repeatType: "reverse", duration : 1 }}
+              style={{
+                position: 'relative',
+                display: 'inline-block',
+                width: 6,
+                height: 6,
+                marginInlineEnd: 5,
+                top: -1,
+                backgroundColor: "#fa8",
+                boxShadow: '0 0 5px #f9a',
+                borderRadius: 10,
+              }}
+            ></motion.span>
+            Level #1
+          </div>
+        <div
           style={{
-            fontSize: 16,
             opacity: 0.5,
-            fontWeight: 'normal'
+            fontWeight: "normal",
           }}
         >
           <span
@@ -62,8 +103,29 @@ const Header = () => {
           <span style={{ opacity: 0.4 }}>
             {tapper.tank.toLocaleString("en-US")}
           </span>
-          <span style={{ marginInline: 5 }}>•</span>
-          x2
+        </div>
+        <div
+          style={{
+            width: "100%",
+            height: 6,
+            borderRadius: 100,
+            marginTop: 10,
+            position: "relative",
+            overflow: "hidden",
+            backgroundColor: "#fff2",
+          }}
+        >
+          <div
+            style={{
+              transition: "all 0.5s ease",
+              width: `${percentage(tapper.remain, tapper.tank)}%`,
+              height: "100%",
+              borderRadius: 100,
+              backgroundColor: "#fff9",
+              backgroundImage:
+                "linear-gradient( 90deg, rgba(233,245,0,1) 29.5%, rgba(23,255,17,1) 45.8%, rgba(29,255,255,1) 61.5%, rgba(202,100,253,1) 92.4% )",
+            }}
+          ></div>
         </div>
       </div>
     </div>

@@ -1,27 +1,4 @@
 @font-face {
-  font-family: "BurbankBig";
-  src: url("./assets/fonts/BurbankBig.woff2");
-}
-@font-face {
-  font-family: "VazirMatn";
-  src: url("./assets/fonts/Vazirmatn-Regular.ttf");
-}
-@font-face {
-  font-family: "VazirMatn";
-  font-weight: 500, 600;
-  src: url("./assets/fonts/Vazirmatn-Medium.ttf");
-}
-@font-face {
-  font-family: "VazirMatn";
-  font-weight: bold;
-  src: url("./assets/fonts/Vazirmatn-Bold.ttf");
-}
-@font-face {
-  font-family: "VazirMatn";
-  font-weight: 900;
-  src: url("./assets/fonts/Vazirmatn-Black.ttf");
-}
-@font-face {
   font-family: "Rubik";
   src: url("./assets/fonts/Rubik-Regular.ttf");
 }

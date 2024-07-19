@@ -2,6 +2,7 @@ import React from "react";
 import { useTapper } from "../stores/useTapper";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
+import AvatarImgSrc from "../assets/avatar.avif";
 
 function percentage(partialValue: number, totalValue: number) {
   return (100 * partialValue) / totalValue;
@@ -13,7 +14,7 @@ const Header = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       tapper.updateRemain();
-    }, 2000);
+    }, 1000);
     return () => {
       clearInterval(interval);
     };
@@ -23,10 +24,9 @@ const Header = () => {
     <div>
       <div
         style={{
-          padding: 20,
+          padding: 15,
           borderRadius: 100,
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           fontWeight: "900",
@@ -34,30 +34,84 @@ const Header = () => {
       >
         <div
           style={{
+            flex: 1,
             display: "flex",
+            alignItems: "start",
             justifyContent: "center",
-            alignItems: "center",
-            marginBottom: -10,
+            flexDirection: "column",
           }}
         >
           <div
             style={{
-              fontSize: 50,
-              marginInline: 10,
-              fontWeight: '600',
-              position: "relative",
-              top: -6,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "baseline",
             }}
           >
-            {tapper.points}
+            <div
+              style={{
+                fontSize: 30,
+                fontWeight: "600",
+                position: "relative",
+              }}
+            >
+              {tapper.points.toLocaleString()}
+            </div>
+            <div
+              style={{
+                fontSize: 20,
+                color: "#baf6",
+                marginInlineStart: 10,
+              }}
+            >
+              $DTU
+            </div>
           </div>
           <div
             style={{
-              fontSize: 30,
-              color: "#baf6",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 4,
+              marginTop: 10,
             }}
           >
-            $DTU
+            <div
+              style={{
+                paddingBlock: 3,
+                paddingInline: 8,
+                borderRadius: 5,
+                fontSize: 14,
+                fontWeight: "normal",
+                backgroundColor: "#fff2",
+                boxShadow: "inset 0 0 0 1px #fff2",
+                border: "1px solid #000",
+              }}
+            >
+              Speed x3
+            </div>
+          </div>
+          <div
+            style={{
+              opacity: 0.8,
+              fontWeight: "normal",
+              marginTop: 5,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 4,
+            }}
+          >
+            <span>
+              <Zap size={18} color="#fa2" />
+            </span>
+            <span
+              style={{ color: tapper.remain < tapper.taps ? "#f22" : "#fff" }}
+            >
+              {tapper.remain}
+            </span>
+            <span>•</span>
+            <span style={{ opacity: 0.5 }}>{tapper.tank}</span>
           </div>
         </div>
         <div
@@ -65,14 +119,31 @@ const Header = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 6,
-            marginTop: 5
+            flexDirection: "column",
+            gap: 5,
           }}
         >
+          <img
+            src={AvatarImgSrc}
+            style={{
+              width: 40,
+              height: 40,
+              backgroundColor: "#fff2",
+              borderRadius: 100,
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            bd6982
+          </div>
           <div
             style={{
               paddingBlock: 3,
-              paddingInline: 10,
+              paddingInline: 5,
               borderRadius: 5,
               fontSize: 14,
               fontWeight: "normal",
@@ -102,49 +173,14 @@ const Header = () => {
             ></motion.span>
             Level #3
           </div>
-          <div
-            style={{
-              paddingBlock: 3,
-              paddingInline: 10,
-              borderRadius: 5,
-              fontSize: 14,
-              fontWeight: "normal",
-              backgroundColor: "#fff2",
-              boxShadow: "inset 0 0 0 1px #fff2",
-              border: "1px solid #000",
-            }}
-          >
-            Speed x3
-          </div>
         </div>
-        <div
-          style={{
-            opacity: 0.8,
-            fontWeight: "normal",
-            marginTop: 20,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 4,
-          }}
-        >
-          <span>
-            <Zap size={18} color="#fa2" />
-          </span>
-          <span
-            style={{ color: tapper.remain < tapper.taps ? "#f22" : "#fff" }}
-          >
-            {tapper.remain}
-          </span>
-          <span>•</span>
-          <span style={{ opacity: 0.5 }}>{tapper.tank}</span>
-        </div>
+      </div>
+      <div style={{ paddingInline: 15 }}>
         <div
           style={{
             width: "100%",
             height: 10,
             borderRadius: 100,
-            marginTop: 10,
             position: "relative",
             overflow: "hidden",
             backgroundColor: "#fff2",

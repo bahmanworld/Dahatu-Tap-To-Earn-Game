@@ -4,7 +4,7 @@ import { useTapper } from "../stores/useTapper";
 import { useDebounce } from "@uidotdev/usehooks";
 import FloatingNumber from "./FloatingNumber";
 import CoinImgSrc from "../assets/coinx.png";
-import { TonConnectButton, useTonConnectUI } from "@tonconnect/ui-react";
+import { TonConnectButton } from "@tonconnect/ui-react";
 
 type Touch = {
   top: number;
@@ -12,7 +12,6 @@ type Touch = {
 };
 
 const Coin = () => {
-  const [ton, setOptions] = useTonConnectUI()
   const tapper = useTapper();
   const [touches, setTouches] = React.useState<Touch[]>([]);
   const [tapInstances, setTapInstances] = React.useState<React.ReactNode[]>([]);
@@ -40,10 +39,10 @@ const Coin = () => {
         style={{
           flex: 1,
           display: "flex",
-          flexDirection: 'column',
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          alignSelf: 'stretch'
+          alignSelf: "stretch",
         }}
       >
         <motion.div
@@ -52,7 +51,7 @@ const Coin = () => {
             maxWidth: 700,
             paddingInline: 100,
             height: undefined,
-            aspectRatio: 1/1,
+            aspectRatio: 1 / 1,
             textAlign: "center",
             alignSelf: "center",
           }}
@@ -97,10 +96,10 @@ const Coin = () => {
             animate={{ scale }}
             transition={{ duration: 0.05 }}
             style={{
-              position: 'relative',
+              position: "relative",
               top: 10,
               width: "100%", // !CAUTION: use parent width
-              height: '100%',
+              height: "100%",
               filter: "brightness(0.8)",
               pointerEvents: "none",
             }}

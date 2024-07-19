@@ -75,14 +75,14 @@ const Coin = () => {
               setTapInstances((prev) => [...prev, newInstance]);
             });
             tapper.updatePoints(tapper.taps);
-            navigator.vibrate([30]);
+            navigator.vibrate([60]);
           }}
           onTouchCancel={(e) => {
             e.preventDefault();
             setTouches([]);
           }}
           onTouchStart={(e) => {
-            setScale(0.97);
+            setScale(0.95);
             if (tapper.remain < tapper.taps) return;
             const ts: Touch[] = [];
             for (let i = 0; i < e.targetTouches.length; i++) {
@@ -99,9 +99,9 @@ const Coin = () => {
           <motion.img
             src={CoinImgSrc}
             animate={{ scale }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.05 }}
             style={{
-              width: "100%", // use parent width
+              width: "100%", // !CAUTION: use parent width
               height: undefined,
               aspectRatio: 1 / 1,
               filter: "brightness(0.5)",

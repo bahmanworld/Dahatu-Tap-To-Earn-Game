@@ -1,16 +1,6 @@
 import React from "react";
 import { useTapper } from "../stores/useTapper";
-import {
-  Blocks,
-  Cog,
-  Coins,
-  Flag,
-  HandCoins,
-  Home,
-  Settings,
-  Users,
-  Wallet,
-} from "lucide-react";
+import { Blocks, Home, Users, Wallet, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -21,77 +11,62 @@ const Footer = () => {
     return [
       {
         id: "home",
-        title: "خانه",
+        title: "Tap",
         icon: <Home size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
+        dot: false,
+      },
+      {
+        type: "divider",
+      },
+      {
+        id: "boost",
+        title: "Boost",
+        icon: <Zap size={25} absoluteStrokeWidth />,
+        page: <div></div>,
+        type: "tab",
+        dot: true,
       },
       {
         type: "divider",
       },
       {
         id: "task",
-        title: "وظیفه‌",
+        title: "Tasks",
         icon: <Blocks size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
-      },
-      {
-        type: "divider",
-      },
-      {
-        id: "earn",
-        title: "کسب",
-        icon: <HandCoins size={25} absoluteStrokeWidth />,
-        page: <div></div>,
-        type: "tab",
+        dot: true,
       },
       {
         type: "divider",
       },
       {
         id: "invite",
-        title: "دعوت",
+        title: "Invite",
         icon: <Users size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
+        dot: false,
       },
       {
         type: "divider",
       },
       {
         id: "wallet",
-        title: "کیف‌پول",
+        title: "Wallet",
         icon: <Wallet size={25} absoluteStrokeWidth />,
         page: <div></div>,
         type: "tab",
+        dot: false,
       },
-      // {
-      //   type: "divider",
-      // },
-      // {
-      //   id: "settings",
-      //   title: "تنظیمات",
-      //   icon: <Settings />,
-      //   page: <div></div>,
-      //   type: "tab",
-      // },
     ];
   }, []);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      tapper.updateRemain();
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
-    <div style={{ padding: 20, paddingBottom: 30 }}>
+    <div style={{ padding: 10, paddingBottom: 30 }}>
       <div
-        dir="rtl"
         style={{
           zIndex: 1,
           backgroundColor: "#fff1",
@@ -128,26 +103,39 @@ const Footer = () => {
                 opacity: currentTab == index ? 1 : 0.5,
                 scale: currentTab == index ? 1.06 : 1,
               }}
-              transition={{stiffness:10}}
+              transition={{ stiffness: 10 }}
               style={{
+                position: 'relative',
                 flex: 1,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                paddingBlock: 20,
+                paddingBlock: 15,
               }}
             >
               <div>{tab.icon}</div>
               <div
                 style={{
                   fontSize: 14,
-                  fontWeight: "600",
-                  lineHeight: 0.8,
+                  fontWeight: "normal",
                   whiteSpace: "nowrap",
                 }}
               >
                 {tab.title}
+              </div>
+              <div style={{
+                position: 'absolute',
+                width: 10,
+                height: 10,
+                border: '3px solid #333', 
+                backgroundColor:'#fa1',
+                top: 10,
+                right: 20,
+                borderRadius: 100,
+                opacity: tab.dot ? 1 : 0
+              }}>
+
               </div>
             </motion.div>
           );

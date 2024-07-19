@@ -1,6 +1,7 @@
 import React from "react";
 import { useTapper } from "../stores/useTapper";
 import { motion } from "framer-motion";
+import { Zap } from "lucide-react";
 
 function percentage(partialValue: number, totalValue: number) {
   return (100 * partialValue) / totalValue;
@@ -43,11 +44,12 @@ const Header = () => {
             style={{
               fontSize: 50,
               marginInline: 10,
+              fontWeight: '600',
               position: "relative",
-              top: -8,
+              top: -6,
             }}
           >
-            {tapper.points.toLocaleString("fa-IR")}
+            {tapper.points}
           </div>
           <div
             style={{
@@ -64,22 +66,9 @@ const Header = () => {
             alignItems: "center",
             justifyContent: "center",
             gap: 6,
+            marginTop: 5
           }}
         >
-          <div
-            style={{
-              paddingBlock: 3,
-              paddingInline: 10,
-              borderRadius: 5,
-              fontSize: 14,
-              fontWeight: "normal",
-              backgroundColor: "#fff2",
-              boxShadow: "inset 0 0 0 1px #fff2",
-              border: "1px solid #000",
-            }}
-          >
-            x٣
-          </div>
           <div
             style={{
               paddingBlock: 3,
@@ -111,25 +100,44 @@ const Header = () => {
                 borderRadius: 10,
               }}
             ></motion.span>
-            سطح #٢
+            Level #3
+          </div>
+          <div
+            style={{
+              paddingBlock: 3,
+              paddingInline: 10,
+              borderRadius: 5,
+              fontSize: 14,
+              fontWeight: "normal",
+              backgroundColor: "#fff2",
+              boxShadow: "inset 0 0 0 1px #fff2",
+              border: "1px solid #000",
+            }}
+          >
+            Speed x3
           </div>
         </div>
         <div
           style={{
             opacity: 0.8,
             fontWeight: "normal",
-            marginTop: 20
+            marginTop: 20,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 4,
           }}
         >
+          <span>
+            <Zap size={18} color="#fa2" />
+          </span>
           <span
             style={{ color: tapper.remain < tapper.taps ? "#f22" : "#fff" }}
           >
-            {tapper.remain.toLocaleString("fa-IR")}
+            {tapper.remain}
           </span>
-          <span style={{ marginInline: 5 }}>•</span>
-          <span style={{ opacity: 0.5 }}>
-            {tapper.tank.toLocaleString("fa-IR")}
-          </span>
+          <span>•</span>
+          <span style={{ opacity: 0.5 }}>{tapper.tank}</span>
         </div>
         <div
           style={{
@@ -140,7 +148,7 @@ const Header = () => {
             position: "relative",
             overflow: "hidden",
             backgroundColor: "#fff2",
-            boxShadow: 'inset 0 0 0 1px #fff1',
+            boxShadow: "inset 0 0 0 1px #fff1",
           }}
         >
           <div
